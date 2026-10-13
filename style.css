@@ -1,0 +1,201 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    padding: 20px;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 30px 24px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #282c4b;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.player {
+    flex: 1;
+    padding: 12px 8px;
+    border: 2px solid #e8e8f0;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #666;
+    font-size: 14px;
+}
+
+.player .symbol {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#playerX .symbol {
+    color: #667eea;
+}
+
+#playerO .symbol {
+    color: #f06b9a;
+}
+
+.player.active {
+    border-color: #667eea;
+    background: #f0f1ff;
+    color: #282c4b;
+}
+
+#status {
+    font-size: 19px;
+    color: #333;
+    margin-bottom: 20px;
+    min-height: 24px;
+}
+
+.board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    min-width: 0;
+    border: none;
+    border-radius: 14px;
+    background: #f0f1f8;
+    font-size: clamp(38px, 12vw, 56px);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+    z-index: 1;
+}
+
+.cell:empty:hover {
+    background: #e2e5ff;
+    transform: scale(1.03);
+}
+
+.cell:focus-visible,
+.restart-btn:focus-visible {
+    outline: 3px solid #282c4b;
+    outline-offset: 3px;
+}
+
+.cell.x {
+    color: #6674DD;
+}
+
+.cell.o {
+    color: #D95687;
+}
+
+.cell.winner {
+    background: #c8f7dc;
+    color: #167747;
+}
+
+/* Winning line connecting the three symbols */
+.winning-line {
+    position: absolute;
+    height: 6px;
+    width: 0;
+    background: #20b66a;
+    border-radius: 10px;
+    z-index: 2;
+    pointer-events: none;
+    display: none;
+    transform-origin: center;
+    box-shadow: 0 0 8px rgba(32, 182, 106, 0.35);
+}
+
+.winning-line.show {
+    display: block;
+    animation: drawLine 0.35s ease-out both;
+}
+
+@keyframes drawLine {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+.restart-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #6674DD;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.restart-btn:hover {
+    background: #5365d5;
+}
+
+.footer {
+    margin-top: 20px;
+    color: #888;
+    font-size: 13px;
+}
+
+@media (max-width: 380px) {
+    .game-container {
+        padding: 22px 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .board {
+        gap: 7px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

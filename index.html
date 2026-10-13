@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="game-container">
+        <h1>Tic-Tac-Toe</h1>
+        <p class="subtitle">Challenge your friend!</p>
+
+        <div class="scoreboard">
+            <div class="player active" id="playerX">
+                <span class="symbol">X</span>
+                <span>Player 1</span>
+            </div>
+
+            <div class="player" id="playerO">
+                <span class="symbol">O</span>
+                <span>Player 2</span>
+            </div>
+        </div>
+
+        <h2 id="status" aria-live="polite">Player X's turn</h2>
+
+        <div class="board" id="board">
+            <button class="cell" data-index="0" aria-label="Cell 1: empty"></button>
+            <button class="cell" data-index="1" aria-label="Cell 2: empty"></button>
+            <button class="cell" data-index="2" aria-label="Cell 3: empty"></button>
+            <button class="cell" data-index="3" aria-label="Cell 4: empty"></button>
+            <button class="cell" data-index="4" aria-label="Cell 5: empty"></button>
+            <button class="cell" data-index="5" aria-label="Cell 6: empty"></button>
+            <button class="cell" data-index="6" aria-label="Cell 7: empty"></button>
+            <button class="cell" data-index="7" aria-label="Cell 8: empty"></button>
+            <button class="cell" data-index="8" aria-label="Cell 9: empty"></button>
+
+            <div class="winning-line" id="winningLine"></div>
+        </div>
+
+        <button id="restartBtn" class="restart-btn">
+            ↻ Restart Game
+        </button>
+
+        <p class="footer">Three in a row wins the game!</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
